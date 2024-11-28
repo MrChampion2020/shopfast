@@ -52,7 +52,7 @@ app.all("/api/*", (req, res) => {
 
 // Redirect unhandled requests to frontend (if desired)
 app.get("*", (req, res) => {
-  res.redirect(process.env.FRONTEND_URL || "http://localhost:3000");
+  res.redirect(process.env.CLIENT_BASE_URL || "http://localhost:3002");
 });
 
 app.listen(PORT, async () => {
