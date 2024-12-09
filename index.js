@@ -22,7 +22,7 @@ const app = express();
 app.use(
   cors({
     origin: process.env.CLIENT_BASE_URL || "http://localhost:3000", // Replace with your frontend's URL
-    methods: "GET,POST,PUT,DELETE",
+    methods: "GET,POST,PUT,DELETE, PATCH, OPTIONS",
     credentials: true, // Allow cookies if needed
   })
 );
@@ -52,7 +52,7 @@ app.all("/api/*", (req, res) => {
 
 // Redirect unhandled requests to frontend (if desired)
 app.get("*", (req, res) => {
-  res.redirect(process.env.CLIENT_BASE_URL || "http://localhost:3002");
+  res.redirect(process.env.CLIENT_BASE_URL || "http://localhost:3000");
 });
 
 app.listen(PORT, async () => {
